@@ -1,5 +1,7 @@
 # Calculator application
 
+![Test](https://github.com/un-tone/HtnCalc/workflows/Test/badge.svg)
+
 ## How to use
 
 Run _htncalc.exe_ and input expressions for calculation. For exit input "q" or "quit" command.

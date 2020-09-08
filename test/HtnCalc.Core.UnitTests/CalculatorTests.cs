@@ -24,6 +24,8 @@ namespace HtnCalc.Core.UnitTests
         [InlineData("(4) + abs(5) + (1 + 1)", 11)]
         [InlineData("abs(5)", 5)]
         [InlineData("((abs(5)))", 5)]
+        [InlineData("0 / 8", 0)]
+        [InlineData("10 - 15", -5)]
         public void Calculate(string input, decimal output)
         {
             var result = _calculator.Calculate(input);
@@ -37,6 +39,16 @@ namespace HtnCalc.Core.UnitTests
         public void Calculate_CalculationException(string input)
         {
             Assert.Throws<CalculationException>(() => _calculator.Calculate(input));
+        }
+
+        [Theory]
+        [InlineData("5 * (0")]
+        [InlineData("10 + 3 -")]
+        [InlineData("5 ** 3")]
+        [InlineData("1 + abs((1+2)")]
+        public void Calculate_ParsingException(string input)
+        {
+            Assert.Throws<ParsingException>(() => _calculator.Calculate(input));
         }
     }
 }

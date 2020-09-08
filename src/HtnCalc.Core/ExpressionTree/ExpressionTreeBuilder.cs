@@ -50,6 +50,7 @@ namespace HtnCalc.Core.ExpressionTree
             return term switch
             {
                 ArithmeticOperatorToken arithmeticOperationToken => BuildArithmeticExpression(termNode, arithmeticOperationToken.OperationType),
+                CompoundTerm compoundTerm => BuildExpressionTree(compoundTerm),
                 _ => BuildLiteralExpressionNode(term)
             };
         }
